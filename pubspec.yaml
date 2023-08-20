@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.0
   quickalert: ^1.0.1
   url_launcher: ^6.1.12
+  flutter_native_splash: ^2.3.2
   
 
 dev_dependencies:

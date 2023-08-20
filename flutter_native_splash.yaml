@@ -1,0 +1,7 @@
+flutter_native_splash:
+  image: "assets/images/splash_center.png"
+  android_gravity: center
+  branding: "assets/images/splash_footer.png"
+  branding_mode: bottom
+  color: "#FFFFFF"
+  fullscreen: true
