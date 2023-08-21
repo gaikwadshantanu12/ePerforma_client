@@ -26,7 +26,7 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
   final _teacherPassword = TextEditingController();
   final _teacherConfirmPassword = TextEditingController();
 
-  String? _teacherDepartment = null;
+  String? _teacherDepartment;
 
   late bool _registerPasswordVisible,
       _registerConfirmPasswordVisible,
@@ -119,7 +119,7 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
         onPressed: buttonClicked,
         style: ElevatedButton.styleFrom(
             padding: const EdgeInsetsDirectional.fromSTEB(24, 10, 24, 10),
-            backgroundColor: AppColors.lightOrange,
+            backgroundColor: AppColors.independence,
             elevation: 3,
             shape: RoundedRectangleBorder(
               side: const BorderSide(
@@ -132,7 +132,7 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
           buttonText,
           style: GoogleFonts.getFont(
             'Readex Pro',
-            textStyle: const TextStyle(color: AppColors.darkBlack),
+            textStyle: const TextStyle(color: AppColors.isabelline),
           ),
         ),
         icon: buttonIcon,
@@ -156,7 +156,7 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
             width: deviceWidth * 0.9,
             height: deviceHeight * 0.8,
             decoration: BoxDecoration(
-              color: AppColors.middleYellowRed,
+              color: AppColors.isabelline,
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: const AlignmentDirectional(0, 0),
@@ -658,7 +658,7 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
             width: deviceWidth * 0.9,
             height: deviceHeight * 0.4,
             decoration: BoxDecoration(
-              color: AppColors.middleYellowRed,
+              color: AppColors.isabelline,
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: const AlignmentDirectional(0, 0),
@@ -858,16 +858,16 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.coffee,
+        backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: true,
         systemOverlayStyle:
-            const SystemUiOverlayStyle(statusBarColor: AppColors.coffee),
+            const SystemUiOverlayStyle(statusBarColor: AppColors.spaceCadet),
         title: Text(
           'Teacher Authentication',
           style: GoogleFonts.getFont(
             'Outfit',
             textStyle: const TextStyle(
-              color: Colors.white,
+              color: AppColors.isabelline,
               fontSize: 22,
             ),
           ),
@@ -908,7 +908,7 @@ class _TeacherAuthenticationPageState extends State<TeacherAuthenticationPage> {
                     textStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.coffee,
+                      color: AppColors.spaceCadet,
                     ),
                   ),
                 ),

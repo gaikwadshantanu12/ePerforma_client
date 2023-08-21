@@ -66,13 +66,13 @@ class UsefullLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.coffee,
+        backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: true,
         title: Text(
           'Useful Links',
           style: GoogleFonts.getFont(
             'Outfit',
-            color: Colors.white,
+            color: AppColors.isabelline,
             fontSize: 22,
           ),
         ),

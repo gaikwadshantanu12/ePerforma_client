@@ -12,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
     double screenHeight = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
-      backgroundColor: AppColors.middleYellowRed,
+      backgroundColor: AppColors.isabelline,
       body: SafeArea(
         top: true,
         child: Container(
@@ -26,7 +26,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [AppColors.middleYellowRed, AppColors.tanCrayola],
+              colors: [AppColors.isabelline, AppColors.silverPink],
               stops: [0.5, 1],
               begin: AlignmentDirectional(-0.34, -1),
               end: AlignmentDirectional(0.34, 1),
@@ -44,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: screenWidth * 0.09,
                 ),
-                colors: const [AppColors.coffee, AppColors.cafeAulait],
+                colors: const [AppColors.spaceCadet, AppColors.independence],
                 gradientDirection: GradientDirection.ttb,
                 gradientType: GradientType.linear,
               ),
@@ -86,7 +86,7 @@ class WelcomeScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/role_selector_page');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.coffee,
+                      backgroundColor: AppColors.spaceCadet,
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
                       elevation: 10,

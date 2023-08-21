@@ -84,7 +84,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
 
   Future<void> registerNewStudent(StudentDetailsModel model) async {
     try {
-      var url = "http://192.168.1.43:8080/student/addNewStudent";
+      var url = "http://192.168.1.8:8080/student/addNewStudent";
       var response = await http.post(
         Uri.parse(url),
         headers: <String, String>{"Content-Type": "application/json"},
@@ -118,7 +118,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
   Future<void> _loginExistingStudent() async {
     try {
       var url =
-          "http://192.168.1.43:8080/student/loginStudent/email=${_emailLoginController.text}&password=${_passwordLoginController.text}";
+          "http://192.168.1.8:8080/student/loginStudent/email=${_emailLoginController.text}&password=${_passwordLoginController.text}";
       var response = await http.get(
         Uri.parse(url),
         headers: <String, String>{"Content-Type": "application/json"},
@@ -185,7 +185,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
         onPressed: buttonClicked,
         style: ElevatedButton.styleFrom(
             padding: const EdgeInsetsDirectional.fromSTEB(24, 10, 24, 10),
-            backgroundColor: AppColors.lightOrange,
+            backgroundColor: AppColors.independence,
             elevation: 3,
             shape: RoundedRectangleBorder(
               side: const BorderSide(
@@ -198,7 +198,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
           buttonText,
           style: GoogleFonts.getFont(
             'Readex Pro',
-            textStyle: const TextStyle(color: AppColors.darkBlack),
+            textStyle: const TextStyle(color: AppColors.isabelline),
           ),
         ),
         icon: buttonIcon,
@@ -222,7 +222,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
             width: deviceWidth * 0.9,
             height: deviceHeight * 0.4,
             decoration: BoxDecoration(
-              color: AppColors.middleYellowRed,
+              color: AppColors.isabelline,
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: const AlignmentDirectional(0, 0),
@@ -399,7 +399,6 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
                           buttonIcon: const Icon(Icons.login),
                           buttonClicked: () async {
                             if (_loginFormKey.currentState!.validate()) {
-                              _loginFormKey.currentState!.reset();
                               await _loginExistingStudent();
                             }
                           },
@@ -432,7 +431,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
             width: deviceWidth * 0.9,
             height: deviceHeight * 0.8,
             decoration: BoxDecoration(
-              color: AppColors.middleYellowRed,
+              color: AppColors.isabelline,
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: const AlignmentDirectional(0, 0),
@@ -933,16 +932,16 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.coffee,
+        backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: true,
         systemOverlayStyle:
-            const SystemUiOverlayStyle(statusBarColor: AppColors.coffee),
+            const SystemUiOverlayStyle(statusBarColor: AppColors.spaceCadet),
         title: Text(
           'Student Authentication',
           style: GoogleFonts.getFont(
             'Outfit',
             textStyle: const TextStyle(
-              color: Colors.white,
+              color: AppColors.isabelline,
               fontSize: 22,
             ),
           ),
@@ -983,7 +982,7 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
                     textStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.coffee,
+                      color: AppColors.spaceCadet,
                     ),
                   ),
                 ),

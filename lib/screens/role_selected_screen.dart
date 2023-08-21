@@ -75,15 +75,15 @@ class RoleSelectedPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.middleYellowRed,
+        backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: false,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.middleYellowRed),
+        systemOverlayStyle:
+            const SystemUiOverlayStyle(statusBarColor: AppColors.spaceCadet),
         title: Text(
           'Welcome to ePerforma',
           style: GoogleFonts.getFont(
             'Outfit',
-            color: AppColors.darkBlack,
+            color: AppColors.isabelline,
             fontSize: 22,
           ),
         ),
@@ -107,13 +107,13 @@ class RoleSelectedPage extends StatelessWidget {
                     children: [
                       singleQuote(
                           quote: "Who are you ??",
-                          textColor: AppColors.coffee,
+                          textColor: AppColors.spaceCadet,
                           start: -1,
                           y: 0,
                           fontSize: 20),
                       singleQuote(
                           quote: "Ummmm, Let me guess !",
-                          textColor: AppColors.cafeAulait,
+                          textColor: AppColors.independence,
                           start: -1,
                           y: 0,
                           fontSize: 20),
@@ -138,13 +138,13 @@ class RoleSelectedPage extends StatelessWidget {
                       ),
                       singleQuote(
                           quote: "Oops, sorry !!",
-                          textColor: AppColors.coffee,
+                          textColor: AppColors.spaceCadet,
                           start: 1,
                           y: 0,
                           fontSize: 20),
                       singleQuote(
                           quote: "I\'m unable to do.",
-                          textColor: AppColors.cafeAulait,
+                          textColor: AppColors.independence,
                           start: 1,
                           y: 0,
                           fontSize: 22),
@@ -159,7 +159,7 @@ class RoleSelectedPage extends StatelessWidget {
                             style: GoogleFonts.getFont(
                               'Readex Pro',
                               textStyle: const TextStyle(
-                                color: AppColors.coffee,
+                                color: AppColors.spaceCadet,
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
                               ),

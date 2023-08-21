@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color coffee = Color(0xFF6F4E37);
-  static const Color cafeAulait = Color(0xFFA67B5B);
-  static const Color lightOrange = Color(0xFFfED8B1);
-  static const Color tanCrayola = Color(0xFFD99A6C);
-  static const Color middleYellowRed = Color(0xFFECB176);
+  static const Color spaceCadet = Color(0xFF22223B);
+  static const Color independence = Color(0xFF4A4E69);
+  static const Color heliotropeGray = Color(0xFF9A8C98);
+  static const Color silverPink = Color(0xFFC9ADA7);
+  static const Color isabelline = Color(0xFFF2E9E4);
   static const Color lightRed = Color(0xFFFF6961);
 
   static const Color darkBlack = Colors.black;

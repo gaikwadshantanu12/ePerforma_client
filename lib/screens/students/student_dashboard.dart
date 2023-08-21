@@ -66,13 +66,13 @@ class _StudentDashboardState extends State<StudentDashboard> {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
-        backgroundColor: AppColors.coffee,
+        backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: false,
         title: Text(
           'Student Dashboard',
           style: GoogleFonts.getFont(
             'Outfit',
-            color: Colors.white,
+            color: AppColors.isabelline,
             fontSize: 22,
           ),
         ),

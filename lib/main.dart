@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Student Performance and Monitoring App',
-      theme: ThemeData(primaryColor: AppColors.coffee),
+      theme: ThemeData(primaryColor: AppColors.spaceCadet),
       initialRoute: '/',
       routes: {
         '/': (context) => const WelcomeScreen(),
