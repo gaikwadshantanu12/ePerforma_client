@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -68,6 +69,8 @@ class UsefullLinks extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: true,
+        systemOverlayStyle:
+            const SystemUiOverlayStyle(statusBarColor: AppColors.spaceCadet),
         title: Text(
           'Useful Links',
           style: GoogleFonts.getFont(

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:student_performance_monitoring_app/constants/session_manager.dart';
 import 'package:student_performance_monitoring_app/models/student/student_details.dart';
 import 'package:http/http.dart' as http;
 
@@ -126,21 +127,25 @@ class _StudentAuthenticationPageState extends State<StudentAuthenticationPage> {
 
       if (response.statusCode == 200) {
         StudentDetailsModel model = StudentDetailsModel.fromJson(response.body);
+        // ignore: avoid_print
         print(model);
 
+        await SessionManager.setLoggedIn(true);
+
         // ignore: use_build_context_synchronously
-        Navigator.pushNamed(context, '/student_dashboard_page');
+        Navigator.pushReplacementNamed(context, '/student_dashboard_page');
       } else {
+        // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
               title: const Text("Login Status"),
-              content:
-                  Text("Student Not Found. Please check email and password."),
+              content: const Text(
+                  "Student Not Found. Please check email and password."),
               actions: <Widget>[
                 TextButton(
-                  child: Text("OK"),
+                  child: const Text("OK"),
                   onPressed: () {
                     Navigator.of(context).pop(); // Close the dialog
                   },

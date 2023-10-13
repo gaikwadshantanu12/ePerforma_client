@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
 
@@ -68,6 +69,8 @@ class _StudentDashboardState extends State<StudentDashboard> {
       appBar: AppBar(
         backgroundColor: AppColors.spaceCadet,
         automaticallyImplyLeading: false,
+        systemOverlayStyle:
+            const SystemUiOverlayStyle(statusBarColor: AppColors.spaceCadet),
         title: Text(
           'Student Dashboard',
           style: GoogleFonts.getFont(

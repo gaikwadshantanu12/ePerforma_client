@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +45,21 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GradientText(
+              Text(
                 'Welcome to ePerforma',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.getFont(
-                  'Roboto',
+                style: TextStyle(
+                  fontFamily: 'Roboto',
                   fontWeight: FontWeight.bold,
                   fontSize: screenWidth * 0.09,
+                  foreground: Paint()
+                    ..shader = const LinearGradient(
+                      colors: [AppColors.spaceCadet, AppColors.independence],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ).createShader(
+                        Rect.fromLTWH(0, 0, screenWidth, screenHeight)),
                 ),
-                colors: const [AppColors.spaceCadet, AppColors.independence],
-                gradientDirection: GradientDirection.ttb,
-                gradientType: GradientType.linear,
               ),
               Text(
                 '~ Student Monitoring & Performance App',

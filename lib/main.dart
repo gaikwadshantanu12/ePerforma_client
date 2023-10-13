@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
 import 'package:student_performance_monitoring_app/screens/role_selected_screen.dart';
+import 'package:student_performance_monitoring_app/screens/splash_screen.dart';
 import 'package:student_performance_monitoring_app/screens/students/student_authentication_page.dart';
 import 'package:student_performance_monitoring_app/screens/students/student_dashboard.dart';
 import 'package:student_performance_monitoring_app/screens/students/useful_links.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primaryColor: AppColors.spaceCadet),
       initialRoute: '/',
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => const SplashScreen(),
+        '/welcome_screen': (context) => const WelcomeScreen(),
         '/role_selector_page': (context) => const RoleSelectedPage(),
         '/student_authentication_page': (context) =>
             const StudentAuthenticationPage(),
