@@ -143,7 +143,7 @@ class RoleSelectedPage extends StatelessWidget {
                           y: 0,
                           fontSize: 20),
                       singleQuote(
-                          quote: "I\'m unable to do.",
+                          quote: "I'm unable to do.",
                           textColor: AppColors.independence,
                           start: 1,
                           y: 0,
@@ -203,6 +203,7 @@ class RoleSelectedPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(
                               context, '/student_authentication_page');
+                          // context.go('/student_authentication_page');
                         },
                       ),
                       roleSelectorButton(
@@ -210,12 +211,15 @@ class RoleSelectedPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(
                               context, '/teacher_authentication_page');
+                          // context.go('/teacher_authentication_page');
                         },
                       ),
                       roleSelectorButton(
-                        buttonText: "Admin",
+                        buttonText: "HOD",
                         onPressed: () {
-                          print("Admin Pressed");
+                          Navigator.pushNamed(
+                              context, '/hod_authentication_page');
+                          // context.go('/hod_authentication_page');
                         },
                       )
                     ],

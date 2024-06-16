@@ -3,31 +3,56 @@ import 'dart:convert';
 class StudentDetailsModel {
   String studentCollegeID;
   String studentName;
-  String studentEmail;
+  String studentPersonalEmail;
+  String studentMobile;
   String studentPassword;
   String studentDepartment;
+  String studentCurrentYear;
+  int studentRollNo;
+  String studentCollegeEmail;
+  String studentProfilePhoto;
+  String studentCurrentSection;
 
   StudentDetailsModel({
     required this.studentCollegeID,
     required this.studentName,
-    required this.studentEmail,
+    required this.studentPersonalEmail,
+    required this.studentMobile,
     required this.studentPassword,
     required this.studentDepartment,
+    required this.studentCurrentYear,
+    required this.studentRollNo,
+    required this.studentCollegeEmail,
+    required this.studentProfilePhoto,
+    required this.studentCurrentSection,
   });
 
   StudentDetailsModel copyWith({
     String? studentCollegeID,
     String? studentName,
-    String? studentEmail,
+    String? studentPersonalEmail,
+    String? studentMobile,
     String? studentPassword,
     String? studentDepartment,
+    String? studentCurrentYear,
+    int? studentRollNo,
+    String? studentCollegeEmail,
+    String? studentProfilePhoto,
+    String? studentCurrentSection,
   }) {
     return StudentDetailsModel(
       studentCollegeID: studentCollegeID ?? this.studentCollegeID,
       studentName: studentName ?? this.studentName,
-      studentEmail: studentEmail ?? this.studentEmail,
+      studentPersonalEmail: studentPersonalEmail ?? this.studentPersonalEmail,
+      studentMobile: studentMobile ?? this.studentMobile,
       studentPassword: studentPassword ?? this.studentPassword,
       studentDepartment: studentDepartment ?? this.studentDepartment,
+      studentCurrentYear: studentCurrentYear ?? this.studentCurrentYear,
+      studentRollNo: studentRollNo ?? this.studentRollNo,
+      studentCollegeEmail: studentCollegeEmail ?? this.studentCollegeEmail,
+      studentProfilePhoto: studentProfilePhoto ?? this.studentProfilePhoto,
+      studentCurrentSection:
+          studentCurrentSection ?? this.studentCurrentSection,
     );
   }
 
@@ -35,9 +60,15 @@ class StudentDetailsModel {
     return {
       'studentCollegeID': studentCollegeID,
       'studentName': studentName,
-      'studentEmail': studentEmail,
+      'studentPersonalEmail': studentPersonalEmail,
+      'studentMobile': studentMobile,
       'studentPassword': studentPassword,
       'studentDepartment': studentDepartment,
+      'studentCurrentYear': studentCurrentYear,
+      'studentRollNo': studentRollNo,
+      'studentCollegeEmail': studentCollegeEmail,
+      'studentProfilePhoto': studentProfilePhoto,
+      'studentCurrentSection': studentCurrentSection,
     };
   }
 
@@ -45,9 +76,15 @@ class StudentDetailsModel {
     return StudentDetailsModel(
       studentCollegeID: map['studentCollegeID'] ?? '',
       studentName: map['studentName'] ?? '',
-      studentEmail: map['studentEmail'] ?? '',
+      studentPersonalEmail: map['studentPersonalEmail'] ?? '',
+      studentMobile: map['studentMobile'] ?? '',
       studentPassword: map['studentPassword'] ?? '',
       studentDepartment: map['studentDepartment'] ?? '',
+      studentCurrentYear: map['studentCurrentYear'] ?? '',
+      studentRollNo: map['studentRollNo']?.toInt() ?? 0,
+      studentCollegeEmail: map['studentCollegeEmail'] ?? '',
+      studentProfilePhoto: map['studentProfilePhoto'] ?? '',
+      studentCurrentSection: map['studentCurrentSection'] ?? '',
     );
   }
 
@@ -58,7 +95,7 @@ class StudentDetailsModel {
 
   @override
   String toString() {
-    return 'StudentDetailsModel(studentCollegeID: $studentCollegeID, studentName: $studentName, studentEmail: $studentEmail, studentPassword: $studentPassword, studentDepartment: $studentDepartment)';
+    return 'StudentDetailsModel(studentCollegeID: $studentCollegeID, studentName: $studentName, studentPersonalEmail: $studentPersonalEmail, studentMobile: $studentMobile, studentPassword: $studentPassword, studentDepartment: $studentDepartment, studentCurrentYear: $studentCurrentYear, studentRollNo: $studentRollNo, studentCollegeEmail: $studentCollegeEmail, studentProfilePhoto: $studentProfilePhoto, studentCurrentSection: $studentCurrentSection)';
   }
 
   @override
@@ -68,17 +105,29 @@ class StudentDetailsModel {
     return other is StudentDetailsModel &&
         other.studentCollegeID == studentCollegeID &&
         other.studentName == studentName &&
-        other.studentEmail == studentEmail &&
+        other.studentPersonalEmail == studentPersonalEmail &&
+        other.studentMobile == studentMobile &&
         other.studentPassword == studentPassword &&
-        other.studentDepartment == studentDepartment;
+        other.studentDepartment == studentDepartment &&
+        other.studentCurrentYear == studentCurrentYear &&
+        other.studentRollNo == studentRollNo &&
+        other.studentCollegeEmail == studentCollegeEmail &&
+        other.studentProfilePhoto == studentProfilePhoto &&
+        other.studentCurrentSection == studentCurrentSection;
   }
 
   @override
   int get hashCode {
     return studentCollegeID.hashCode ^
         studentName.hashCode ^
-        studentEmail.hashCode ^
+        studentPersonalEmail.hashCode ^
+        studentMobile.hashCode ^
         studentPassword.hashCode ^
-        studentDepartment.hashCode;
+        studentDepartment.hashCode ^
+        studentCurrentYear.hashCode ^
+        studentRollNo.hashCode ^
+        studentCollegeEmail.hashCode ^
+        studentProfilePhoto.hashCode ^
+        studentCurrentSection.hashCode;
   }
 }

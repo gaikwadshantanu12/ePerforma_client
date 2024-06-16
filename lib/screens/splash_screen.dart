@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
+import 'package:student_performance_monitoring_app/constants/widgets/general/default_animation.dart';
 import '../constants/session_manager.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,17 +18,74 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _checkSessionAndNavigate() async {
-    bool isLoggedIn = await SessionManager.isLoggedIn();
-    String routeName =
-        isLoggedIn ? '/student_dashboard_page' : '/welcome_screen';
+    final storedStudent = await SessionManager.getStoredStudent();
+    final storedTeacher = await SessionManager.getStoredTeacher();
+    final storedHod = await SessionManager.getStoredHod();
+    String? role = await SessionManager.getGlobalAppRole();
+    String routeName;
 
-    Future.delayed(const Duration(seconds: 5), () {
-      Navigator.of(context).pushReplacementNamed(routeName);
-    });
+    switch (role) {
+      case 'student':
+        {
+          routeName = storedStudent != null
+              ? '/student/student_dashboard_page'
+              : '/welcome_screen';
+          Future.delayed(const Duration(seconds: 3), () {
+            Navigator.of(context)
+                .pushReplacementNamed(routeName, arguments: storedStudent);
+          });
+          // ignore: use_build_context_synchronously
+          // context.go(storedStudent != null
+          //     ? '/student/student_dashboard_page'
+          //     : '/welcome_screen');
+        }
+        break;
+      case 'teacher':
+        {
+          routeName = storedTeacher != null
+              ? '/teacher/teacher_dashboard_page'
+              : '/welcome_screen';
+          Future.delayed(const Duration(seconds: 3), () {
+            Navigator.of(context)
+                .pushReplacementNamed(routeName, arguments: storedTeacher);
+          });
+          // ignore: use_build_context_synchronously
+          // context.go(storedTeacher != null
+          //     ? '/teacher/teacher_dashboard_page'
+          //     : '/welcome_screen');
+        }
+        break;
+      case 'hod':
+        {
+          routeName =
+              storedHod != null ? '/hod/hod_dashboard_page' : '/welcome_screen';
+          Future.delayed(const Duration(seconds: 3), () {
+            Navigator.of(context)
+                .pushReplacementNamed(routeName, arguments: storedHod);
+          });
+          // ignore: use_build_context_synchronously
+          // context.go(storedHod != null
+          //     ? '/hod/hod_dashboard_page'
+          //     : '/welcome_screen');
+        }
+        break;
+      default:
+        {
+          routeName = '/welcome_screen';
+          Future.delayed(const Duration(seconds: 3), () {
+            Navigator.of(context).pushReplacementNamed(routeName);
+          });
+          // ignore: use_build_context_synchronously
+          // context.go('/welcome_screen');
+        }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: SafeArea(
@@ -42,29 +98,12 @@ class _SplashScreenState extends State<SplashScreen> {
             decoration: const BoxDecoration(
               color: AppColors.primaryBackground,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Lottie.asset(
-                  'assets/lottie_animations/animation_lnodhg8r.json',
-                  width: 300,
-                  height: 250,
-                  fit: BoxFit.cover,
-                  animate: true,
-                ),
-                Text(
-                  'Please wait !!!\nUntill the app loads completely !!',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.getFont(
-                    'Readex Pro',
-                    fontSize: 20,
-                    textStyle: const TextStyle(
-                      color: AppColors.spaceCadet,
-                    ),
-                  ),
-                ),
-              ],
+            child: DefaultAnimationMessage(
+              animationFile: "assets/lottie_animations/screen_loader.json",
+              animationMessage:
+                  "Please wait !!!\nUntill the app loads completely !!",
+              deviceWidth: deviceWidth,
+              deviceHeight: deviceHeight,
             ),
           ),
         ),

@@ -16,4 +16,5 @@ class AppColors {
 
   static const Color primaryBackground = Color(0xFFF1F4F8);
   static const Color secondaryText = Color(0xFF57636C);
+  static const Color green = Color.fromARGB(115, 60, 215, 89);
 }

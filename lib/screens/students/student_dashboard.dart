@@ -2,65 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_performance_monitoring_app/constants/colors.dart';
+import 'package:student_performance_monitoring_app/constants/session_manager.dart';
+import 'package:student_performance_monitoring_app/constants/widgets/general/single_card_item.dart';
+import 'package:student_performance_monitoring_app/models/student/student_details.dart';
 
-class StudentDashboard extends StatefulWidget {
+class StudentDashboard extends StatelessWidget {
   const StudentDashboard({super.key});
 
   @override
-  State<StudentDashboard> createState() => _StudentDashboardState();
-}
-
-class _StudentDashboardState extends State<StudentDashboard> {
-  Widget _singleCard(
-      {required String cardText,
-      required String cardImage,
-      required double width,
-      required double height}) {
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      color: AppColors.freshWhite,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Container(
-        width: width * 0.4,
-        height: height * 0.2,
-        decoration: const BoxDecoration(
-          color: AppColors.freshWhite,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              width: width * 0.28,
-              height: height * 0.1,
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.network(
-                cardImage,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Text(
-              cardText,
-              style: GoogleFonts.getFont(
-                'Readex Pro',
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final StudentDetailsModel student =
+        ModalRoute.of(context)!.settings.arguments as StudentDetailsModel;
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
 
@@ -81,6 +33,26 @@ class _StudentDashboardState extends State<StudentDashboard> {
         ),
         centerTitle: false,
         elevation: 2,
+        actions: [
+          Align(
+            alignment: const AlignmentDirectional(0, 0),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.logout,
+                  size: 24,
+                  color: AppColors.isabelline,
+                ),
+                onPressed: () {
+                  SessionManager.setGlobalAppRole('');
+                  SessionManager.logoutStudent();
+                  Navigator.pushReplacementNamed(context, '/welcome_screen');
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         top: true,
@@ -96,19 +68,33 @@ class _StudentDashboardState extends State<StudentDashboard> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _singleCard(
-                      cardText: "My Profile",
-                      cardImage:
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGnMBznsXiF3d24T0m-uEgiQUkjPeutggHKw&usqp=CAU',
-                      width: width,
-                      height: height,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, '/student/student_profile_page',
+                            arguments: student);
+                      },
+                      child: SingleCardItem(
+                        cardText: "My Profile",
+                        cardImage:
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGnMBznsXiF3d24T0m-uEgiQUkjPeutggHKw&usqp=CAU',
+                        width: width,
+                        height: height,
+                      ),
                     ),
-                    _singleCard(
-                      cardText: "Academics",
-                      cardImage:
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu2eoiUdo6hfmhpKqH86oyvzfMv9VAvdvCbQ&usqp=CAU',
-                      width: width,
-                      height: height,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, '/student/student_academics_page',
+                            arguments: student);
+                      },
+                      child: SingleCardItem(
+                        cardText: "Academics",
+                        cardImage:
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu2eoiUdo6hfmhpKqH86oyvzfMv9VAvdvCbQ&usqp=CAU',
+                        width: width,
+                        height: height,
+                      ),
                     ),
                   ],
                 ),
@@ -121,19 +107,24 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _singleCard(
+                      SingleCardItem(
                         cardText: 'Attendance',
                         cardImage:
                             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY79XARUFPkF5NpJUkQfoREI-hrvRODWD24g&usqp=CAU',
                         width: width,
                         height: height,
                       ),
-                      _singleCard(
-                        cardText: 'Official Notices',
-                        cardImage:
-                            'https://ourstartupindia.com/wp-content/uploads/2023/06/public-930x620.jpg',
-                        width: width,
-                        height: height,
+                      InkWell(
+                        onTap: () => Navigator.pushNamed(
+                            context, '/student/view_notices_page',
+                            arguments: student.studentDepartment),
+                        child: SingleCardItem(
+                          cardText: 'Official Notices',
+                          cardImage:
+                              'https://ourstartupindia.com/wp-content/uploads/2023/06/public-930x620.jpg',
+                          width: width,
+                          height: height,
+                        ),
                       )
                     ],
                   ),
@@ -149,9 +140,10 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/student_useful_links');
+                          Navigator.pushNamed(
+                              context, '/student/student_useful_links');
                         },
-                        child: _singleCard(
+                        child: SingleCardItem(
                           cardText: 'Useful Links',
                           cardImage:
                               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFGbprl8nify2ZUXxajT2ktDwkT4jnYwhwFQ&usqp=CAU',

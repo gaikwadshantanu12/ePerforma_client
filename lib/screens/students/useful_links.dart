@@ -87,61 +87,63 @@ class UsefullLinks extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
           child: ListView.builder(
-              itemCount: websiteLists.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () async {
-                    try {
-                      Uri uri = Uri.parse(websiteLists[index]['website']);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri);
-                      } else {
-                        print("Could not launch $uri");
-                      }
-                    } catch (e) {
-                      throw "Exception is $e";
+            itemCount: websiteLists.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () async {
+                  try {
+                    Uri uri = Uri.parse(websiteLists[index]['website']);
+                    if (await canLaunchUrl(uri)) {
+                      await launchUrl(uri);
+                    } else {
+                      // ignore: avoid_print
+                      print("Could not launch $uri");
                     }
-                  },
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: MediaQuery.sizeOf(context).height * 0.15,
-                    margin: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                    decoration: BoxDecoration(
-                      color: AppColors.freshWhite,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            width: MediaQuery.sizeOf(context).width * 0.3,
-                            height: 120,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.network(
-                              websiteLists[index]['image'],
-                              fit: BoxFit.cover,
-                            ),
+                  } catch (e) {
+                    throw "Exception is $e";
+                  }
+                },
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width,
+                  height: MediaQuery.sizeOf(context).height * 0.15,
+                  margin: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                  decoration: BoxDecoration(
+                    color: AppColors.freshWhite,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 0.3,
+                          height: 120,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
                           ),
-                          Text(
-                            websiteLists[index]['title'],
-                            style: GoogleFonts.getFont(
-                              'Readex Pro',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
-                        ],
-                      ),
+                          child: Image.network(
+                            websiteLists[index]['image'],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Text(
+                          websiteLists[index]['title'],
+                          style: GoogleFonts.getFont(
+                            'Readex Pro',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                );
-              }),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

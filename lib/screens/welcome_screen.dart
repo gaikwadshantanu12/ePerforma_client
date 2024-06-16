@@ -97,6 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.pushNamed(context, '/role_selector_page');
+                      // context.go('/role_selector_page');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.spaceCadet,
